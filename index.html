@@ -552,12 +552,16 @@
     letter-spacing: 3px;
     color: var(--shiro);
     background: var(--sumi);
-    padding: 16px 56px;
+    padding: 18px 56px;
     border: none;
+    border-bottom: 3px solid var(--shu);
     cursor: pointer;
     transition: all 0.3s;
   }
-  .diag-btn:hover { background: var(--shu); }
+  .diag-btn:hover {
+    background: var(--shu);
+    border-bottom-color: var(--shu-muted);
+  }
 
   /* Progress */
   .diag-progress {
@@ -666,22 +670,24 @@
   .diag-result-cta {
     display: inline-block;
     font-family: 'Noto Sans JP', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 4px;
-    padding: 20px 64px;
+    padding: 22px 72px;
     text-decoration: none;
     transition: all 0.3s;
     margin-bottom: 16px;
+    margin-top: 8px;
   }
   .diag-result-cta.primary {
     color: var(--shiro);
     background: var(--shu);
-    box-shadow: 0 4px 20px rgba(184, 59, 46, 0.3);
+    border-bottom: 3px solid var(--shu-muted);
+    box-shadow: 0 4px 24px rgba(184, 59, 46, 0.25);
   }
   .diag-result-cta.primary:hover {
     background: var(--shu-muted);
-    box-shadow: 0 6px 28px rgba(184, 59, 46, 0.4);
+    box-shadow: 0 8px 32px rgba(184, 59, 46, 0.35);
     transform: translateY(-2px);
   }
   .diag-retry {
@@ -695,6 +701,140 @@
     margin-top: 16px;
   }
   .diag-retry:hover { color: var(--shu); }
+
+  /* 診断結果：支援内容 */
+  .diag-result-support {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--sumi);
+    line-height: 2;
+    font-weight: 400;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 24px;
+    background: rgba(184, 59, 46, 0.04);
+    border-left: 2px solid var(--shu);
+  }
+
+  /* 診断結果：お願い（low/none用） */
+  .diag-result-ask {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--sumi);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+  .diag-result-ask-desc {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--sumi-light);
+    line-height: 2;
+    font-weight: 300;
+    margin-bottom: 36px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 診断結果：セカンダリCTA */
+  .diag-result-cta.secondary {
+    color: var(--sumi);
+    background: none;
+    border: 0.5px solid var(--hai);
+    box-shadow: none;
+  }
+  .diag-result-cta.secondary:hover {
+    border-color: var(--shu);
+    color: var(--shu);
+    background: none;
+    box-shadow: none;
+    transform: translateY(-2px);
+  }
+
+  /* URLコピー完了トースト */
+  .diag-copy-toast {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 12px;
+    color: var(--shu);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .diag-copy-toast.show {
+    opacity: 1;
+  }
+
+  /* ===== PARTNER FORM ===== */
+  .partner-form-section {
+    background: var(--kinari-deep);
+    padding: 80px 32px;
+  }
+  .partner-form {
+    max-width: 480px;
+    margin: 40px auto 0;
+  }
+  .partner-form-group {
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .partner-form-group label {
+    display: block;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sumi);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .partner-form-group input,
+  .partner-form-group select,
+  .partner-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--sumi);
+    background: var(--shiro);
+    border: 0.5px solid rgba(0,0,0,0.12);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+  .partner-form-group input:focus,
+  .partner-form-group select:focus,
+  .partner-form-group textarea:focus {
+    border-color: var(--shu);
+  }
+  .partner-form-group textarea {
+    resize: vertical;
+  }
+  .partner-form-submit {
+    display: inline-block;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    padding: 18px 56px;
+    color: var(--shiro);
+    background: var(--shu);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(184, 59, 46, 0.3);
+  }
+  .partner-form-submit:hover {
+    background: var(--shu-muted);
+    box-shadow: 0 6px 28px rgba(184, 59, 46, 0.4);
+    transform: translateY(-2px);
+  }
 
   /* ===== PROFILE ===== */
   .profile {
@@ -963,12 +1103,12 @@
     <div class="track-grid">
       <div class="track-card">
         <div class="track-card-who">学校 × キャリア教育</div>
-        <div class="track-card-title">通信制高校にて年間キャリア教育プログラムを設計・実施</div>
+        <div class="track-card-title">高校にて年間キャリア教育プログラムを設計・実施</div>
         <div class="track-card-detail">適性検査 → 因子掛け算 → キャッチコピー → 仮決め。生徒が「自分の強み」を発見するのではなく、掛け算の中から自然と浮かび上がる授業設計。</div>
       </div>
       <div class="track-card">
         <div class="track-card-who">企業 × 採用導線</div>
-        <div class="track-card-title">NFC名刺起点の採用導線パッケージを設計</div>
+        <div class="track-card-title">電子名刺起点の採用導線パッケージを設計</div>
         <div class="track-card-detail">名刺1枚 → 資料配布サイト → 採用スライド → 適性診断 → 応募。学校訪問後に「何も残らない」を解決する仕組みを構築。制作物はすべて企業に帰属。</div>
       </div>
       <div class="track-card">
@@ -1004,7 +1144,7 @@
       </div>
       <div class="svc-item">
         <h4>スコレー（Schole）</h4>
-        <p>KeHareキャリア教育塾。学校設定科目の外部専門家として、体系的なキャリア教育を設計・実施。</p>
+        <p>KeHareキャリア教育塾。学校設定科目の外部専門家として、体系的なキャリア教育を設計・実施。［KeHare高等学院スコレー開校構想］</p>
       </div>
       <div class="svc-item">
         <h4>U:story（StoryBook）</h4>
@@ -1070,7 +1210,7 @@
             <span class="plan-letter">PLAN A</span>
             <span class="plan-badge">POPULAR</span>
           </div>
-          <div class="plan-name">スタート</div>
+          <div class="plan-name">並盛り</div>
           <div class="plan-price">
             <span class="plan-price-unit">月額 </span>
             <span class="plan-price-num">3</span>
@@ -1079,7 +1219,7 @@
           <div class="plan-init">初期費用 15万円（税別）</div>
           <div class="plan-contents">
             QR名刺制作／資料配布サイト<br>
-            採用スライド（8枚）／適性診断<br>
+            採用スライド（8枚程度）／適性診断<br>
             導線設計／プレゼン資料<br>
             コンテンツ更新 月1回／サイト保守
           </div>
@@ -1089,7 +1229,7 @@
             <span class="plan-letter">PLAN B</span>
             <span></span>
           </div>
-          <div class="plan-name">スタンダード</div>
+          <div class="plan-name">大盛り</div>
           <div class="plan-price">
             <span class="plan-price-unit">月額 </span>
             <span class="plan-price-num">5</span>
@@ -1098,7 +1238,7 @@
           <div class="plan-init">初期費用 15万円（税別）</div>
           <div class="plan-contents">
             Aの全内容に加え：<br>
-            採用動画制作（ショート）<br>
+            導線改善ミーティング 月1回<br>
             コンテンツ更新 月2回
           </div>
         </div>
@@ -1107,7 +1247,7 @@
             <span class="plan-letter">PLAN C</span>
             <span></span>
           </div>
-          <div class="plan-name">プレミアム</div>
+          <div class="plan-name">特盛り</div>
           <div class="plan-price">
             <span class="plan-price-unit">月額 </span>
             <span class="plan-price-num">8</span>
@@ -1116,12 +1256,12 @@
           <div class="plan-init">初期費用 15万円（税別）</div>
           <div class="plan-contents">
             Bの全内容に加え：<br>
-            SNS運用代行／更新 無制限<br>
+            採用導線の診断・再設計<br>
             月次戦略会議
           </div>
         </div>
       </div>
-      <div class="plans-note">全プラン：最低契約6ヶ月 ／ 以降いつでも解約OK ／ 制作物は全て企業に帰属</div>
+      <div class="plans-note">全プラン共通：初期費用15万円（税別）／ 契約縛りなし・いつでも解約OK ／ 制作物は全て企業に帰属</div>
       <div class="plans-compare">※ 個別外注の市場相場 210〜420万円相当 → 初期15万円＋月額3万円〜</div>
     </div>
   </div>
@@ -1171,14 +1311,13 @@
       <div class="profile-left">
         <div class="profile-name">渡部由貴</div>
         <div class="profile-kehare">KeHare ── 褻 晴</div>
-        <div class="profile-role">Pro Coach</div>
       </div>
       <div class="profile-right">
         <p class="profile-bio">
-          民間企業（教育サービス業→不動産管理→IoT企業）を経て、高校教員としてキャリア教育に従事。その後、高校新卒採用の設計・運用に携わり、学校×企業×自治体の接点を構築。現在はKeHareを法人成りする予定、Pro Coachとして経営者・教育者の実装支援を行う。非常勤講師としても教壇に立つ。
+          民間企業（教育サービス業→不動産管理→IoT企業）を経て、高校教員としてキャリア教育に従事。その後、高校新卒採用の設計・運用に携わり、学校×企業×自治体の接点を構築。現在はKeHare代表として、キャリア教育塾「スコレー」の開塾およびKeHare高等学院の開校準備を進めている。2026年、KeHare出版より初の出版物を刊行。
         </p>
         <p class="profile-bio" style="margin-top: 16px; border-top: 0.5px solid rgba(0,0,0,0.08); padding-top: 16px; font-style: italic;">
-          「正論では人は動かない。だからまず、自分の弱みからさらけ出す。」──コンサルタントではなく、一緒に泥にまみれる伴走者でありたいと考えています。
+          できないことがあったっていい。誰かの笑顔をつくれる何かひとつがあれば、それでいいじゃないか！──そのひとつを探す旅。
         </p>
       </div>
     </div>
@@ -1191,6 +1330,49 @@
   <div class="cta-sub">初回のご相談は無料です。お気軽にお問い合わせください。</div>
   <div class="cta-mail">
     <a href="mailto:kehare.coach.info24369@gmail.com">kehare.coach.info24369@gmail.com</a>
+  </div>
+</section>
+
+<!-- ===== PARTNER FORM ===== -->
+<section class="partner-form-section" id="partner-form" style="display:none;">
+  <div class="section-inner">
+    <div class="section-label">PARTNER</div>
+    <h2 class="section-title">KeHare高等学院に力を貸す</h2>
+    <div class="section-lead">
+      キャリア教育に特化した高校をつくるために、あなたの力が必要です。<br>
+      以下のフォームからご連絡ください。
+    </div>
+    <form class="partner-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="partner-form-group">
+        <label for="partner-name">お名前</label>
+        <input type="text" id="partner-name" name="name" required>
+      </div>
+      <div class="partner-form-group">
+        <label for="partner-org">会社名・学校名</label>
+        <input type="text" id="partner-org" name="organization">
+      </div>
+      <div class="partner-form-group">
+        <label for="partner-email">メールアドレス</label>
+        <input type="email" id="partner-email" name="email" required>
+      </div>
+      <div class="partner-form-group">
+        <label for="partner-type">力を貸せそうなこと</label>
+        <select id="partner-type" name="partner_type">
+          <option value="">選択してください</option>
+          <option value="workplace">職場体験・インターンの受け入れ</option>
+          <option value="mentor">経営者メンター・対話への参加</option>
+          <option value="curriculum">カリキュラム共同開発</option>
+          <option value="recruitment">採用視点のフィードバック</option>
+          <option value="education">教育連携・合同授業</option>
+          <option value="other">その他・まずは話を聞きたい</option>
+        </select>
+      </div>
+      <div class="partner-form-group">
+        <label for="partner-message">メッセージ（任意）</label>
+        <textarea id="partner-message" name="message" rows="4" placeholder="気になっていること、聞いてみたいことなど、お気軽にどうぞ。"></textarea>
+      </div>
+      <button type="submit" class="partner-form-submit">送信する</button>
+    </form>
   </div>
 </section>
 
@@ -1207,18 +1389,22 @@
 //   Layer 3 — 言語化以前（まだ、言葉にならないものがある）
 //   Layer 2 — 言語化では足りない（言葉だけでは、届かない）
 //   Layer 1 — 言語化で解決（言葉にすれば、動き出す）
-const questions = [
-  {
-    text: '今、一番近い立場はどれですか？',
-    options: [
-      { label: '企業の経営者・管理職', tags: ['biz'] },
-      { label: '企業の採用・集客担当', tags: ['saiyou'] },
-      { label: '学校の先生・管理職', tags: ['school'] },
-      { label: 'どれにも当てはまらない', tags: ['none'] }
-    ]
-  },
-  {
-    text: '自分たちの強みや価値を、\n相手に伝わる言葉にできていますか？',
+
+// Q1: role選択（共通）
+const questionRole = {
+  text: '今、一番近い立場はどれですか？',
+  options: [
+    { label: '企業の経営者・管理職', tags: ['biz'] },
+    { label: '企業の採用・集客担当', tags: ['saiyou'] },
+    { label: '学校の先生・管理職', tags: ['school'] },
+    { label: 'どれにも当てはまらない', tags: ['none'] }
+  ]
+};
+
+// Q2: 言語化（role別）
+const q2 = {
+  biz: {
+    text: '自社の強みや価値を、\n社員にも顧客にも伝わる言葉にできていますか？',
     options: [
       { label: '言葉にしようとしたこともない', score: 4, layer: 3 },
       { label: '言葉にはしたが、しっくりこない', score: 3, layer: 2 },
@@ -1226,8 +1412,30 @@ const questions = [
       { label: '十分にできている', score: 0 }
     ]
   },
-  {
-    text: '「正しいことを言っているのに、\n人が動かない」と感じたことは？',
+  saiyou: {
+    text: '自社の魅力を、求職者や顧客に\n"刺さる言葉"で伝えられていますか？',
+    options: [
+      { label: '他社と似たような表現になっている', score: 4, layer: 3 },
+      { label: '言葉はあるが、反応が薄い', score: 3, layer: 2 },
+      { label: 'ある程度は手応えがある', score: 1, layer: 1 },
+      { label: '十分に伝わっている', score: 0 }
+    ]
+  },
+  school: {
+    text: 'キャリア教育や進路指導の意義を、\n生徒に伝わる言葉にできていますか？',
+    options: [
+      { label: 'そもそも言語化したことがない', score: 4, layer: 3 },
+      { label: '伝えてはいるが、生徒に響いていない気がする', score: 3, layer: 2 },
+      { label: 'ある程度は伝わっている', score: 1, layer: 1 },
+      { label: '十分に伝わっている', score: 0 }
+    ]
+  }
+};
+
+// Q3: 伝わらない経験（role別）
+const q3 = {
+  biz: {
+    text: '「正しいことを伝えているのに、\n社員が動かない」と感じたことは？',
     options: [
       { label: 'よくある。理由もわからない', score: 4, layer: 3 },
       { label: 'ある。論理だけでは足りないと感じる', score: 3, layer: 2 },
@@ -1235,7 +1443,29 @@ const questions = [
       { label: 'あまりない', score: 0 }
     ]
   },
-  {
+  saiyou: {
+    text: '情報は出しているのに、\n応募や問い合わせにつながらないと感じたことは？',
+    options: [
+      { label: 'よくある。何が悪いのかもわからない', score: 4, layer: 3 },
+      { label: 'ある。情報の出し方に問題がある気はする', score: 3, layer: 2 },
+      { label: 'たまにある', score: 1 },
+      { label: 'あまりない', score: 0 }
+    ]
+  },
+  school: {
+    text: '「大事な話をしているのに、\n生徒の目が死んでいる」と感じたことは？',
+    options: [
+      { label: 'よくある。どうすればいいかわからない', score: 4, layer: 3 },
+      { label: 'ある。伝え方を変えるべきだと思う', score: 3, layer: 2 },
+      { label: 'たまにある', score: 1 },
+      { label: 'あまりない', score: 0 }
+    ]
+  }
+};
+
+// Q4: 資産化（role別）── 最大の修正ポイント
+const q4 = {
+  biz: {
     text: '採用や集客の取り組みが、\n"消費"になっていませんか？',
     desc: '（費用をかけても、終わったら何も残らない状態）',
     options: [
@@ -1244,25 +1474,50 @@ const questions = [
       { label: '仕組みとして蓄積されている', score: 0 }
     ]
   },
-  {
-    text: '本音で壁打ちできる相手が\n社外（校外）にいますか？',
+  saiyou: {
+    text: '採用や集客で使った資料・コンテンツが、\n次に活かされていますか？',
     options: [
-      { label: 'いない。そもそも何を相談すべきかわからない', score: 4, layer: 3 },
-      { label: 'いない。相談したいことはあるが相手がいない', score: 3, layer: 2 },
-      { label: '一応いるが物足りない', score: 1 },
-      { label: 'いる', score: 0 }
+      { label: '毎回ゼロからつくり直している', score: 4, layer: 3 },
+      { label: '一部は使い回せているが体系化されていない', score: 2, layer: 2 },
+      { label: '仕組みとして蓄積・運用できている', score: 0 }
     ]
   },
-  {
-    text: '今の課題を解決するために、\n何が必要だと思いますか？',
+  school: {
+    text: 'キャリア教育や進路指導が、\n"行事"で終わっていませんか？',
+    desc: '（単発のガイダンスや講演で、終わったら何も残らない状態）',
     options: [
-      { label: 'そもそも課題が何かも曖昧', score: 4, layer: 3 },
-      { label: '課題はわかるが、どう動けばいいかわからない', score: 3, layer: 2 },
-      { label: '必要な手段はわかっている。実行する手が足りない', score: 1, layer: 1 },
-      { label: '順調に進んでいる', score: 0 }
+      { label: '完全に単発。毎年同じことの繰り返し', score: 4, layer: 3 },
+      { label: '一部は体系化しているが属人的', score: 2, layer: 2 },
+      { label: '年間プログラムとして設計・蓄積できている', score: 0 }
     ]
-  },
-  {
+  }
+};
+
+// Q5: 壁打ち相手（共通）
+const q5 = {
+  text: '本音で壁打ちできる相手が\n社外（校外）にいますか？',
+  options: [
+    { label: 'いない。そもそも何を相談すべきかわからない', score: 4, layer: 3 },
+    { label: 'いない。相談したいことはあるが相手がいない', score: 3, layer: 2 },
+    { label: '一応いるが物足りない', score: 1 },
+    { label: 'いる', score: 0 }
+  ]
+};
+
+// Q6: 何が必要か（共通）
+const q6 = {
+  text: '今の課題を解決するために、\n何が必要だと思いますか？',
+  options: [
+    { label: 'そもそも課題が何かも曖昧', score: 4, layer: 3 },
+    { label: '課題はわかるが、どう動けばいいかわからない', score: 3, layer: 2 },
+    { label: '必要な手段はわかっている。実行する手が足りない', score: 1, layer: 1 },
+    { label: '順調に進んでいる', score: 0 }
+  ]
+};
+
+// Q7: 感情（role別）
+const q7 = {
+  biz: {
     text: '組織の中で、\n"感情"を扱えていますか？',
     desc: '（理屈だけでなく、人の気持ちが意思決定に反映されているか）',
     options: [
@@ -1271,9 +1526,43 @@ const questions = [
       { label: 'ある程度は意識している', score: 1 },
       { label: '十分に扱えている', score: 0 }
     ]
+  },
+  saiyou: {
+    text: '採用や集客で、相手の\n"感情"を設計に組み込めていますか？',
+    desc: '（スペックや条件だけでなく、心が動く体験をつくれているか）',
+    options: [
+      { label: '感情を設計するという発想がなかった', score: 4, layer: 3 },
+      { label: '大事だと思うが、やり方がわからない', score: 3, layer: 2 },
+      { label: 'ある程度は意識している', score: 1 },
+      { label: '十分にできている', score: 0 }
+    ]
+  },
+  school: {
+    text: '生徒の進路選択に、\n"感情"を扱えていますか？',
+    desc: '（偏差値や条件だけでなく、生徒の「本当はどうしたいか」を引き出せているか）',
+    options: [
+      { label: '感情を扱うという発想がなかった', score: 4, layer: 3 },
+      { label: '大事だと思うが、時間も方法もない', score: 3, layer: 2 },
+      { label: 'ある程度は意識している', score: 1 },
+      { label: '十分に引き出せている', score: 0 }
+    ]
   }
-];
+};
 
+// role別に質問セットを組み立てる
+function buildQuestions(role) {
+  return [
+    questionRole,
+    q2[role] || q2.biz,
+    q3[role] || q3.biz,
+    q4[role] || q4.biz,
+    q5,
+    q6,
+    q7[role] || q7.biz
+  ];
+}
+
+let questions = buildQuestions('biz');
 let currentQ = 0;
 let totalScore = 0;
 let layerCounts = { 3: 0, 2: 0, 1: 0 };
@@ -1285,6 +1574,7 @@ function startDiag() {
   currentQ = 0;
   totalScore = 0;
   layerCounts = { 3: 0, 2: 0, 1: 0 };
+  questions = buildQuestions('biz');
   renderProgress();
   renderQuestion();
 }
@@ -1336,12 +1626,13 @@ function answer(idx) {
     return;
   }
 
+  // Q1回答後にrole別の質問セットを再構築
+  if (currentQ === 0) {
+    questions = buildQuestions(userType);
+  }
+
   currentQ++;
   if (currentQ >= questions.length) {
-    // 3-layer判定: layer3が最多 or スコア18以上 → 言語化以前
-    // layer2が最多 or スコア10以上 → 言語化では足りない
-    // それ以外でスコア4以上 → 言語化で解決
-    // スコア3以下 → 大丈夫
     if (layerCounts[3] >= 3 || totalScore >= 18) showResult('layer3');
     else if (layerCounts[2] >= 3 || totalScore >= 10) showResult('layer2');
     else if (totalScore >= 4) showResult('layer1');
@@ -1353,58 +1644,188 @@ function answer(idx) {
   renderQuestion();
 }
 
+// role別の診断結果
+const resultsByRole = {
+  biz: {
+    layer3: {
+      level: '言語化以前',
+      title: 'まだ、言葉にならないものがある。',
+      desc: '経営の現場で感じている違和感、組織への不安──その正体がまだ霧の中にあります。でも、それは悪いことではありません。言葉にする"前"にしか見えないものがある。まずは、経営者としてのあなたの感覚を一緒に聴くところから始めましょう。',
+      support: '初回30分、一緒に"違和感の輪郭"を探します。何も準備はいりません。',
+      cta: '30分、壁打ちから始める（無料）',
+      ctaHref: '#contact'
+    },
+    layer2: {
+      level: '言語化では足りない',
+      title: '言葉だけでは、社員は動かない。',
+      desc: '課題は見えている。戦略も語れる。でも社員が動かない──それは、情緒の設計が欠けているからかもしれません。正しさの先にある"伝わり方"を、経営の言葉で一緒に設計しませんか。',
+      support: '1on1で、あなたの言葉を"社員が動く言葉"に変えていきます。理念の再設計から組織対話の設計まで、一緒にやれます。',
+      cta: '伝わり方を変える',
+      ctaHref: '#contact'
+    },
+    layer1: {
+      level: '言語化で解決',
+      title: '言葉にすれば、組織は動き出す。',
+      desc: 'あなたの課題は、適切に言語化すれば解決に向かう段階です。あとは、実装するだけです。',
+      support: '理念の言語化、採用導線の設計、組織の仕組み化──一緒に形にしていきませんか。',
+      cta: '実装を一緒に始める',
+      ctaHref: '#contact'
+    },
+    low: {
+      level: 'RESULT',
+      title: '診断おつかれさまでした。',
+      desc: '今回の結果では、すぐにお力になれる場面は見つかりませんでした。',
+      ask: 'ひとつ、お願いがあります。',
+      askDesc: '今、キャリア教育に特化した高校「KeHare高等学院」をつくろうとしています。生徒が「自分が輝ける場所」を本物の大人から学ぶために、企業パートナーが必要です。職場体験の受け入れ、経営者としての対話、授業テーマの提供──あなたの会社で働く大人の姿を、高校生に見せてくれませんか。',
+      cta: 'KeHare高等学院に力を貸す',
+      ctaHref: '#partner-form',
+      cta2: '気軽に壁打ちしてみる（無料）',
+      cta2Href: '#contact'
+    }
+  },
+  saiyou: {
+    layer3: {
+      level: '言語化以前',
+      title: 'まだ、言葉にならないものがある。',
+      desc: '「なぜ応募が来ないのか」「何を変えればいいのか」──その答えがまだ見えていない状態です。でも、それは悪いことではありません。課題の手前にある"感覚"を一緒に整理するところから始めましょう。',
+      support: '初回30分、採用・集客の"本当の詰まり"がどこにあるか一緒に探します。施策ではなく構造から。',
+      cta: '30分、壁打ちから始める（無料）',
+      ctaHref: '#contact'
+    },
+    layer2: {
+      level: '言語化では足りない',
+      title: '情報では、人の心は動かない。',
+      desc: '求人情報は出している。自社の良さもわかっている。でも反応が薄い──それは、届け方の"感情設計"が欠けているからかもしれません。スペックの先にある"心が動く導線"を一緒に設計しませんか。',
+      support: 'QRコード名刺から採用スライド・相性診断まで、"出会いから応募まで"の導線をワンパッケージで設計します。',
+      cta: '届く導線をつくる',
+      ctaHref: '#contact'
+    },
+    layer1: {
+      level: '言語化で解決',
+      title: '導線を整えれば、届き始める。',
+      desc: 'あなたの課題は、適切な導線設計と言語化で解決に向かう段階です。あとは、実装するだけです。',
+      support: '自社の魅力の再定義、採用スライドの制作、資料配布サイトの構築──"使い捨て"の採用活動を"資産"に変えます。',
+      cta: '実装を一緒に始める',
+      ctaHref: '#contact'
+    },
+    low: {
+      level: 'RESULT',
+      title: '診断おつかれさまでした。',
+      desc: '今回の結果では、すぐにお力になれる場面は見つかりませんでした。',
+      ask: 'ひとつ、お願いがあります。',
+      askDesc: '今、キャリア教育に特化した高校「KeHare高等学院」をつくろうとしています。生徒が「自分が輝ける場所」を本物の大人から学ぶために、「企業が求める人材像」の生の声が必要です。採用の現場を知るあなたの視点を、教育の入口に届けてくれませんか。',
+      cta: 'KeHare高等学院に力を貸す',
+      ctaHref: '#partner-form',
+      cta2: '気軽に壁打ちしてみる（無料）',
+      cta2Href: '#contact'
+    }
+  },
+  school: {
+    layer3: {
+      level: '言語化以前',
+      title: 'まだ、言葉にならないものがある。',
+      desc: '「キャリア教育、このままでいいのか」「生徒に何を残せているのか」──その違和感の正体がまだ霧の中にあります。でも、それは悪いことではありません。まずは、先生としてのあなたの感覚を一緒に聴くところから始めましょう。',
+      support: '初回30分、"キャリア教育への違和感"を一緒に言葉にします。元高校教員だからこそ、現場の事情を踏まえて聴けます。',
+      cta: '30分、壁打ちから始める（無料）',
+      ctaHref: '#contact'
+    },
+    layer2: {
+      level: '言語化では足りない',
+      title: '正しい授業では、生徒は動かない。',
+      desc: 'カリキュラムはある。情報も伝えている。でも生徒の目が変わらない──それは、"感情に届く設計"が欠けているからかもしれません。教科書の先にある"生徒が自分ごとにする仕掛け"を一緒に設計しませんか。',
+      support: '適性検査×因子掛け算×キャッチコピー生成を組み合わせた授業設計で、生徒が"自分の強みを言葉にできる"プログラムをつくります。',
+      cta: '生徒が動く授業をつくる',
+      ctaHref: '#contact'
+    },
+    layer1: {
+      level: '言語化で解決',
+      title: '設計すれば、生徒は動き出す。',
+      desc: 'あなたの課題は、キャリア教育の体系化と言語化で解決に向かう段階です。あとは、実装するだけです。',
+      support: '年間プログラムの設計、ワークショップの構築、企業・自治体との連携──属人的なキャリア教育を"学校の仕組み"に変えます。',
+      cta: '実装を一緒に始める',
+      ctaHref: '#contact'
+    },
+    low: {
+      level: 'RESULT',
+      title: '診断おつかれさまでした。',
+      desc: '今回の結果では、すぐにお力になれる場面は見つかりませんでした。',
+      ask: 'ひとつ、お願いがあります。',
+      askDesc: '今、キャリア教育に特化した高校「KeHare高等学院」をつくろうとしています。生徒が「自分が輝ける場所」を本物の大人から学ぶために、教育連携パートナーが必要です。カリキュラムの共同開発、合同授業、教員同士の研究会──先生の知見を、新しい学校の土台に力を貸してくれませんか。',
+      cta: 'KeHare高等学院に力を貸す',
+      ctaHref: '#partner-form',
+      cta2: '気軽に壁打ちしてみる（無料）',
+      cta2Href: '#contact'
+    }
+  }
+};
+
+// none結果
+const resultNone = {
+  level: 'RESULT',
+  title: '診断いただき、ありがとうございます。',
+  desc: 'KeHareは今、経営者・採用担当・教育者の方を中心にお手伝いしています。',
+  ask: 'ひとつ、お願いがあります。',
+  askDesc: '今、キャリア教育に特化した高校「KeHare高等学院」をつくろうとしています。もし周りに、この取り組みに興味を持ってくれそうな方がいれば、このページを届けていただけると嬉しいです。',
+  cta: 'このページを届ける',
+  ctaHref: null
+};
+
 function showResult(level) {
   document.getElementById('diagQuestions').style.display = 'none';
   const el = document.getElementById('diagResult');
   el.classList.add('active');
 
-  const results = {
-    layer3: {
-      level: '言語化以前',
-      title: 'まだ、言葉にならないものがある。',
-      desc: '課題の正体がまだ霧の中にあります。でも、それは悪いことではありません。言葉にする"前"にしか見えないものがある。まずは、あなたの中にある感覚を一緒に聴くところから始めましょう。',
-      cta: '話してみる',
-      ctaHref: '#contact'
-    },
-    layer2: {
-      level: '言語化では足りない',
-      title: '言葉だけでは、届かない。',
-      desc: '課題は見えている。言葉にもできている。でも人が動かない──それは、情緒の設計が欠けているからかもしれません。正しさの先にある"伝わり方"を一緒に設計しませんか。',
-      cta: '相談してみる',
-      ctaHref: '#contact'
-    },
-    layer1: {
-      level: '言語化で解決',
-      title: '言葉にすれば、動き出す。',
-      desc: 'あなたの課題は、適切に言語化すれば解決に向かう段階です。強みの整理、導線の設計、仕組みの構築──具体的な実装を一緒に進めましょう。',
-      cta: '整理を始める',
-      ctaHref: '#contact'
-    },
-    low: {
-      level: 'RESULT',
-      title: '今は、大丈夫です。',
-      desc: '現時点では、渡部由貴の支援は必要なさそうです。必要になったとき、またこのページを思い出してください。',
-      cta: '',
-      ctaHref: ''
-    },
-    none: {
-      level: 'RESULT',
-      title: '今は、お力になれる領域がありません。',
-      desc: 'KeHareは経営者・採用担当・教育者向けのサービスです。もし周囲に該当する方がいらっしゃれば、このページをお伝えいただけると嬉しいです。',
-      cta: '',
-      ctaHref: ''
-    }
-  };
+  // none判定
+  if (level === 'none') {
+    let html = '<div class="diag-result-level">' + resultNone.level + '</div>';
+    html += '<div class="diag-result-title">' + resultNone.title + '</div>';
+    html += '<div class="diag-result-desc">' + resultNone.desc + '</div>';
+    html += '<div class="diag-result-ask">' + resultNone.ask + '</div>';
+    html += '<div class="diag-result-ask-desc">' + resultNone.askDesc + '</div>';
+    html += '<button class="diag-result-cta primary" onclick="copyPageUrl()">このページを届ける</button><br>';
+    html += '<div class="diag-copy-toast" id="copyToast">URLをコピーしました</div>';
+    html += '<button class="diag-retry" onclick="resetDiag()">もう一度診断する</button>';
+    el.innerHTML = html;
+    return;
+  }
 
-  const r = results[level];
+  // role別結果を取得
+  const roleResults = resultsByRole[userType] || resultsByRole.biz;
+  const r = roleResults[level];
+
+  // low判定（role別のKeHare高等学院導線）
+  if (level === 'low') {
+    let html = '<div class="diag-result-level">' + r.level + '</div>';
+    html += '<div class="diag-result-title">' + r.title + '</div>';
+    html += '<div class="diag-result-desc">' + r.desc + '</div>';
+    html += '<div class="diag-result-ask">' + r.ask + '</div>';
+    html += '<div class="diag-result-ask-desc">' + r.askDesc + '</div>';
+    html += '<a href="' + r.ctaHref + '" class="diag-result-cta primary">' + r.cta + '</a><br>';
+    html += '<a href="' + r.cta2Href + '" class="diag-result-cta secondary">' + r.cta2 + '</a><br>';
+    html += '<button class="diag-retry" onclick="resetDiag()">もう一度診断する</button>';
+    el.innerHTML = html;
+    return;
+  }
+
+  // layer3 / layer2 / layer1
   let html = '<div class="diag-result-level">' + r.level + '</div>';
   html += '<div class="diag-result-title">' + r.title + '</div>';
   html += '<div class="diag-result-desc">' + r.desc + '</div>';
-  if (r.cta) {
-    html += '<a href="' + r.ctaHref + '" class="diag-result-cta primary">' + r.cta + '</a><br>';
-  }
+  html += '<div class="diag-result-support">' + r.support + '</div>';
+  html += '<a href="' + r.ctaHref + '" class="diag-result-cta primary">' + r.cta + '</a><br>';
   html += '<button class="diag-retry" onclick="resetDiag()">もう一度診断する</button>';
   el.innerHTML = html;
+}
+
+// URLコピー機能（none結果用）
+function copyPageUrl() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    const toast = document.getElementById('copyToast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 2000);
+    }
+  });
 }
 
 function resetDiag() {
@@ -1412,18 +1833,28 @@ function resetDiag() {
   totalScore = 0;
   layerCounts = { 3: 0, 2: 0, 1: 0 };
   userType = 'biz';
+  questions = buildQuestions('biz');
   document.getElementById('diagResult').classList.remove('active');
   document.getElementById('diagResult').innerHTML = '';
   document.getElementById('diagStart').style.display = 'block';
   document.getElementById('diagQuestions').style.display = 'none';
+  // パートナーフォームも非表示に戻す
+  document.getElementById('partner-form').style.display = 'none';
 }
 
-// Smooth scroll
+// Smooth scroll（partner-form対応）
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    const href = this.getAttribute('href');
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    // #partner-form の場合は表示してからスクロール
+    if (href === '#partner-form') {
+      target.style.display = 'block';
+    }
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 </script>
