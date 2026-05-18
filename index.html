@@ -142,10 +142,27 @@
     background: var(--sumi);
     padding: 14px 48px;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: transform 0.3s;
+    animation: heroCtaPulse 1.6s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(184, 59, 46, 0.55);
+    position: relative;
+  }
+  @keyframes heroCtaPulse {
+    0%, 100% {
+      background: var(--sumi);
+      box-shadow: 0 0 0 0 rgba(184, 59, 46, 0.55);
+      transform: scale(1);
+    }
+    50% {
+      background: var(--shu);
+      box-shadow: 0 0 0 12px rgba(184, 59, 46, 0);
+      transform: scale(1.04);
+    }
   }
   .hero-cta:hover {
     background: var(--shu);
+    animation-play-state: paused;
+    transform: scale(1.06);
   }
 
   /* ===== HERO ONE-LINER ===== */
@@ -955,9 +972,46 @@
     .saiyou-box { padding: 24px 20px; }
     section { padding: 60px 20px; }
   }
+
+  /* ===== CUSTOM CURSOR (KeHare logo) ===== */
+  @media (hover: hover) and (pointer: fine) {
+    body.kehare-cursor-on,
+    body.kehare-cursor-on * {
+      cursor: none !important;
+    }
+    .kehare-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 56px;
+      height: 29px;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease;
+      opacity: 0;
+      will-change: transform, left, top;
+    }
+    .kehare-cursor.is-visible { opacity: 1; }
+    .kehare-cursor.is-hover {
+      width: 72px;
+      height: 38px;
+    }
+    .kehare-cursor img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+    }
+  }
 </style>
 </head>
 <body>
+
+<!-- ===== CUSTOM CURSOR (KeHare logo) ===== -->
+<div class="kehare-cursor" aria-hidden="true">
+  <img src="kehare_mark.png" alt="">
+</div>
 
 <!-- ===== HEADER ===== -->
 <header>
@@ -1453,7 +1507,7 @@ const q3 = {
     ]
   },
   school: {
-    text: '「大事な話をしているのに、\n生徒の目が死んでいる」と感じたことは？',
+    text: '「大事な話をしているのに、\n生徒の目がキラキラしていない」と感じたことは？',
     options: [
       { label: 'よくある。どうすればいいかわからない', score: 4, layer: 3 },
       { label: 'ある。伝え方を変えるべきだと思う', score: 3, layer: 2 },
@@ -1857,6 +1911,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     target.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+/* ===== Custom KeHare logo cursor ===== */
+(function() {
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!canHover) return;
+
+  var cursor = document.querySelector('.kehare-cursor');
+  if (!cursor) return;
+
+  document.body.classList.add('kehare-cursor-on');
+
+  var x = window.innerWidth / 2;
+  var y = window.innerHeight / 2;
+  var raf = null;
+
+  function render() {
+    cursor.style.left = x + 'px';
+    cursor.style.top = y + 'px';
+    raf = null;
+  }
+
+  window.addEventListener('mousemove', function(e) {
+    x = e.clientX;
+    y = e.clientY;
+    if (!cursor.classList.contains('is-visible')) cursor.classList.add('is-visible');
+    if (raf === null) raf = requestAnimationFrame(render);
+
+    var t = e.target;
+    var hoverable = t && (t.closest && t.closest('a, button, input, textarea, select, [role="button"], .diag-btn, .diag-option, .hero-cta'));
+    cursor.classList.toggle('is-hover', !!hoverable);
+  });
+
+  window.addEventListener('mouseleave', function() { cursor.classList.remove('is-visible'); });
+  window.addEventListener('mouseenter', function() { cursor.classList.add('is-visible'); });
+  document.addEventListener('mouseleave', function(e) {
+    if (e.relatedTarget === null) cursor.classList.remove('is-visible');
+  });
+})();
 </script>
 
 </body>
