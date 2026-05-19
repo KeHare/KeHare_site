@@ -992,6 +992,31 @@
     background: var(--kinari);
     padding: 70px 32px;
     border-top: 0.5px solid rgba(0,0,0,0.06);
+    display: none;
+  }
+  .share-section.is-open {
+    display: block;
+    animation: shareFadeIn 0.35s ease;
+  }
+  @keyframes shareFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .share-hint {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    color: var(--hai);
+    letter-spacing: 1px;
+    margin-top: 16px;
+  }
+  .share-hint kbd {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    padding: 2px 6px;
+    border: 0.5px solid var(--hai);
+    border-radius: 3px;
+    color: var(--sumi-light);
+    margin: 0 2px;
   }
   .share-section .section-title {
     font-size: clamp(20px, 2.6vw, 26px);
@@ -1134,7 +1159,6 @@
       <li><a href="#tsunaga">つながレール</a></li>
       <li><a href="#diagnostic">診断</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
-      <li><a href="#share">共有</a></li>
     </ul>
   </div>
 </header>
@@ -1582,6 +1606,9 @@
         <div class="share-url">https://kehare.github.io/KeHare_site/#contact</div>
         <button class="share-copy" data-url="https://kehare.github.io/KeHare_site/#contact">コピー</button>
       </div>
+    </div>
+    <div class="share-hint">
+      呼び出し：<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>　／　<kbd>L</kbd><kbd>I</kbd><kbd>N</kbd><kbd>K</kbd> と順に打鍵　／　閉じる：<kbd>ESC</kbd>
     </div>
   </div>
 </section>
@@ -2067,6 +2094,64 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     target.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+/* ===== Share section toggle (⌘+Shift+L / "LINK" piano / ESC) ===== */
+(function() {
+  var section = document.getElementById('share');
+  if (!section) return;
+
+  function openShare() {
+    if (section.classList.contains('is-open')) return;
+    section.classList.add('is-open');
+    setTimeout(function() {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+  function closeShare() {
+    section.classList.remove('is-open');
+  }
+  function toggleShare() {
+    if (section.classList.contains('is-open')) closeShare();
+    else openShare();
+  }
+
+  // "LINK" piano typing buffer
+  var buffer = '';
+  var bufferTimer = null;
+  function pushKey(ch) {
+    buffer = (buffer + ch).slice(-4);
+    if (bufferTimer) clearTimeout(bufferTimer);
+    bufferTimer = setTimeout(function() { buffer = ''; }, 1500);
+    if (buffer.toLowerCase() === 'link') {
+      buffer = '';
+      toggleShare();
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    // フォーム入力中はピアノ打鍵を無効化（ショートカットは有効）
+    var t = e.target;
+    var inField = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+
+    // ⌘+Shift+L または Ctrl+Shift+L
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'L' || e.key === 'l')) {
+      e.preventDefault();
+      toggleShare();
+      return;
+    }
+
+    // ESC で閉じる
+    if (e.key === 'Escape' && section.classList.contains('is-open')) {
+      closeShare();
+      return;
+    }
+
+    // L→I→N→K の順打ち（フォーム外のみ）
+    if (!inField && !e.metaKey && !e.ctrlKey && !e.altKey && e.key.length === 1) {
+      pushKey(e.key);
+    }
+  });
+})();
 
 /* ===== Share-URL copy buttons ===== */
 document.querySelectorAll('.share-copy').forEach(function(btn) {
