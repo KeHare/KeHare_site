@@ -951,6 +951,42 @@
     margin-top: 8px;
   }
 
+  /* ===== KEHARE MARK (logo) ===== */
+  .nav-mark {
+    height: 22px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+    opacity: 0.9;
+  }
+  .hero-mark {
+    display: block;
+    width: clamp(140px, 20vw, 200px);
+    height: auto;
+    margin: 0 auto 24px;
+    opacity: 0.95;
+  }
+  .section-title {
+    position: relative;
+  }
+  .section-title::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 25px;
+    margin-bottom: 14px;
+    background: url('kehare_mark.png') no-repeat left center;
+    background-size: contain;
+    opacity: 0.6;
+  }
+  .footer-mark {
+    display: block;
+    width: 90px;
+    height: auto;
+    margin: 0 auto 14px;
+    opacity: 0.7;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -1016,7 +1052,7 @@
 <!-- ===== HEADER ===== -->
 <header>
   <div class="nav-inner">
-    <div class="nav-logo">KeHare <span>褻 晴</span></div>
+    <div class="nav-logo"><img class="nav-mark" src="kehare_mark.png" alt="">KeHare <span>褻 晴</span></div>
     <ul class="nav-links">
       <li><a href="#about">KeHareとは</a></li>
       <li><a href="#track">実績</a></li>
@@ -1031,6 +1067,7 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner">
+    <img class="hero-mark" src="kehare_mark.png" alt="KeHare">
     <div class="hero-kehare">KeHare ── 褻 晴</div>
     <h1 class="hero-catch">
       感情時代の到来──<br>
@@ -1432,6 +1469,7 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
+  <img class="footer-mark" src="kehare_mark.png" alt="">
   <div class="footer-text">© 2026 KeHare（褻晴）</div>
   <div class="footer-tagline">日常（褻）から晴れ舞台（晴）へ、その架け橋を設計します</div>
   <div style="margin-top: 12px;"><a href="tokushoho.html" style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--hai);letter-spacing:1.5px;text-decoration:none;">特定商取引法に基づく表記</a></div>
