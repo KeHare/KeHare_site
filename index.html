@@ -83,6 +83,38 @@
   }
   .nav-links a:hover { color: var(--shu); }
 
+  /* ===== HAMBURGER ===== */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 110;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--sumi);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    margin: 0 auto;
+  }
+  .nav-hamburger.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-hamburger.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
   /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
@@ -1088,13 +1120,83 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    /* ナビ：ドロワー化 */
+    .nav-inner { padding: 12px 20px; }
+    .nav-logo { font-size: 16px; letter-spacing: 3px; }
+    .nav-mark { height: 20px; margin-right: 8px; }
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 78%;
+      max-width: 320px;
+      flex-direction: column;
+      gap: 0;
+      background: var(--shiro);
+      padding: 80px 28px 40px;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      transform: translateX(105%);
+      transition: transform 0.32s ease;
+      z-index: 105;
+    }
+    .nav-links.is-open { transform: translateX(0); }
+    .nav-links li { border-bottom: 0.5px solid rgba(0,0,0,0.08); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links a {
+      display: block;
+      padding: 16px 0;
+      font-size: 14px;
+      letter-spacing: 3px;
+    }
+    /* ドロワーオープン時の暗幕 */
+    .nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.32s ease;
+      z-index: 100;
+    }
+    .nav-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+    /* セクション共通 */
+    section { padding: 56px 20px; }
+
+    /* ヒーロー */
+    .hero { padding: 96px 20px 64px; min-height: auto; }
+    .hero-mark { width: clamp(96px, 28vw, 140px); margin-bottom: 18px; }
+    .hero-kehare { font-size: 12px; letter-spacing: 5px; margin-bottom: 18px; }
+    .hero-catch { font-size: clamp(20px, 6vw, 26px); letter-spacing: 2px; line-height: 1.7; margin-bottom: 26px; }
+    .hero-sub { font-size: 13px; line-height: 1.95; margin-bottom: 32px; }
+    .hero-sub br { display: none; }
+    .hero-cta {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .hero-oneliner { font-size: 11px; line-height: 1.9; margin-top: 28px; }
+    .hero-oneliner br { display: none; }
+
+    /* セクションタイトル */
+    .section-title { font-size: 20px; letter-spacing: 2px; }
+    .section-title::before { width: 40px; height: 22px; margin-bottom: 10px; }
+    .section-lead { font-size: 13px; margin-bottom: 32px; }
+
+    /* グリッド類 */
     .labs-grid { grid-template-columns: 1fr; }
     .lab-card { border-right: none; border-bottom: 0.5px solid rgba(0,0,0,0.08); }
     .svc-list { grid-template-columns: 1fr; }
     .plans-grid { grid-template-columns: 1fr; }
     .plan.popular { transform: none; }
-    .saiyou-flow { grid-template-columns: repeat(3, 1fr); }
+    .saiyou-flow { grid-template-columns: 1fr; gap: 14px; }
     .profile-card { grid-template-columns: 1fr; text-align: center; }
     .profile-left {
       text-align: center;
@@ -1104,8 +1206,38 @@
       margin-bottom: 20px;
       border-bottom: 2px solid var(--shu);
     }
-    .saiyou-box { padding: 24px 20px; }
-    section { padding: 60px 20px; }
+    .saiyou-box { padding: 22px 18px; }
+
+    /* 診断ツール */
+    .diag-btn { padding: 16px 36px; font-size: 13px; letter-spacing: 2px; width: 100%; max-width: 320px; }
+    .diag-q-text { font-size: 17px; line-height: 1.7; margin-bottom: 24px; letter-spacing: 0.5px; }
+    .diag-q-num { font-size: 10px; }
+    .diag-option { padding: 14px 16px; font-size: 13px; line-height: 1.55; }
+    .diag-option:hover { padding-left: 16px; } /* ホバーの左ズレを無効化 */
+    .diag-result-level { font-size: 12px; letter-spacing: 3px; }
+    .diag-result-title { font-size: 20px; letter-spacing: 1px; line-height: 1.55; }
+    .diag-result-desc { font-size: 13px; line-height: 1.9; padding-bottom: 24px; margin-bottom: 28px; }
+
+    /* フッター */
+    footer { padding: 28px 20px; }
+    .footer-tagline { font-size: 11px; line-height: 1.7; }
+
+    /* シェアセクション */
+    .share-section { padding: 50px 20px; }
+    .share-hint { font-size: 10px; line-height: 1.8; }
+  }
+
+  /* ===== 小型スマホ（〜480px）===== */
+  @media (max-width: 480px) {
+    section { padding: 48px 18px; }
+    .hero { padding: 88px 18px 56px; }
+    .hero-catch { font-size: 19px; letter-spacing: 1.5px; }
+    .hero-catch br { display: none; }
+    .hero-sub { font-size: 12.5px; }
+    .nav-logo span { font-size: 11px; letter-spacing: 1.5px; margin-left: 4px; }
+    .diag-q-text { font-size: 16px; }
+    .diag-result-title { font-size: 18px; }
+    .track-card { padding: 20px 18px; }
   }
 
   /* ===== CUSTOM CURSOR (KeHare logo) ===== */
@@ -1121,7 +1253,7 @@
       width: 56px;
       height: 29px;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 100000;
       transform: translate(-50%, -50%);
       transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease;
       opacity: 0;
@@ -1148,6 +1280,9 @@
   <img src="kehare_mark.png" alt="">
 </div>
 
+<!-- ===== NAV BACKDROP (mobile drawer) ===== -->
+<div class="nav-backdrop" aria-hidden="true"></div>
+
 <!-- ===== HEADER ===== -->
 <header>
   <div class="nav-inner">
@@ -1160,6 +1295,9 @@
       <li><a href="#diagnostic">診断</a></li>
       <li><a href="#contact">お問い合わせ</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="メニュー" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -2095,6 +2233,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* ===== Mobile drawer (hamburger) ===== */
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var links = document.querySelector('.nav-links');
+  var backdrop = document.querySelector('.nav-backdrop');
+  if (!btn || !links || !backdrop) return;
+
+  function setOpen(open) {
+    btn.classList.toggle('is-open', open);
+    links.classList.toggle('is-open', open);
+    backdrop.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  btn.addEventListener('click', function() {
+    setOpen(!links.classList.contains('is-open'));
+  });
+  backdrop.addEventListener('click', function() { setOpen(false); });
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { setOpen(false); });
+  });
+  // 画面サイズ変更時（縦↔横回転含む）に自動で閉じる
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && links.classList.contains('is-open')) setOpen(false);
+  });
+})();
+
 /* ===== Share section toggle (⌘+Shift+L / "LINK" piano / ESC) ===== */
 (function() {
   var section = document.getElementById('share');
@@ -2208,6 +2373,233 @@ document.querySelectorAll('.share-copy').forEach(function(btn) {
   document.addEventListener('mouseleave', function(e) {
     if (e.relatedTarget === null) cursor.classList.remove('is-visible');
   });
+})();
+</script>
+
+<!-- ===== HYOUJOU POPUP (容 -- KeHareサイト初対面UX) ===== -->
+<style>
+  #hyoujou-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(20, 18, 14, 0.82);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1500ms ease;
+    padding: 24px;
+  }
+  #hyoujou-overlay.is-visible { opacity: 1; }
+  #hyoujou-overlay.is-fading { opacity: 0; transition: opacity 800ms ease; }
+
+  .hyoujou-card {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: var(--shiro);
+    padding: 56px 40px 40px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    transform: translateY(8px);
+    transition: transform 1500ms ease;
+  }
+  #hyoujou-overlay.is-visible .hyoujou-card { transform: translateY(0); }
+
+  .hyoujou-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--hai);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .hyoujou-close:hover { color: var(--sumi); }
+
+  .hyoujou-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--hai);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .hyoujou-q {
+    font-family: 'Noto Serif JP', 'YuMincho', serif;
+    font-size: 22px;
+    text-align: center;
+    color: var(--sumi);
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+  .hyoujou-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .hyoujou-option {
+    font-family: 'Noto Serif JP', 'YuMincho', serif;
+    font-size: 15px;
+    text-align: left;
+    padding: 14px 20px;
+    background: var(--kinari);
+    color: var(--sumi);
+    border: 0.5px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: background 0.4s, transform 0.2s;
+    line-height: 1.6;
+  }
+  .hyoujou-option:hover {
+    background: var(--kinari-deep);
+    transform: translateX(2px);
+  }
+  .hyoujou-note {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    color: var(--hai);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .hyoujou-response {
+    font-family: 'Noto Serif JP', 'YuMincho', serif;
+    font-size: 19px;
+    text-align: center;
+    color: var(--sumi);
+    line-height: 1.9;
+    padding: 32px 8px 8px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1200ms ease;
+  }
+  .hyoujou-response.is-visible { opacity: 1; }
+
+  .hyoujou-enter {
+    display: block;
+    margin: 28px auto 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    padding: 14px 36px;
+    background: var(--sumi);
+    color: var(--shiro);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    opacity: 0;
+  }
+  .hyoujou-enter.is-visible { opacity: 1; transition: opacity 800ms ease 600ms; }
+  .hyoujou-enter:hover { background: var(--sumi-mid); }
+
+  body.hyoujou-lock { overflow: hidden; }
+
+  @media (max-width: 600px) {
+    .hyoujou-card { padding: 48px 24px 32px; }
+    .hyoujou-q { font-size: 18px; }
+    .hyoujou-option { font-size: 14px; padding: 13px 16px; }
+    .hyoujou-response { font-size: 17px; }
+  }
+</style>
+
+<div id="hyoujou-overlay" role="dialog" aria-modal="true" aria-labelledby="hyoujou-q">
+  <div class="hyoujou-card">
+    <button class="hyoujou-close" id="hyoujou-close" aria-label="閉じる">×</button>
+    <div id="hyoujou-question-area">
+      <div class="hyoujou-label">― ようこそ、KeHareへ ―</div>
+      <div class="hyoujou-q" id="hyoujou-q">ご自身の今の表情は？</div>
+      <div class="hyoujou-options" id="hyoujou-options"></div>
+      <div class="hyoujou-note">答えなくても、閉じても大丈夫</div>
+    </div>
+    <div id="hyoujou-response-area" style="display:none;">
+      <div class="hyoujou-response" id="hyoujou-response"></div>
+      <button class="hyoujou-enter" id="hyoujou-enter">サイトに入る</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'kehare_hyoujou_v1';
+  var CACHE_DAYS = 30;
+
+  var pairs = [
+    { option: '口角が、ほんの少し上がっている', response: '上がっていますね、口角。' },
+    { option: '眉が、寄っている',                response: '寄っていますね、眉。' },
+    { option: '唇を、噛んでいる',                response: '噛んでいるのですね、唇を。' },
+    { option: '視線が、定まらない',              response: '定まらないのですね、視線。' },
+    { option: '自分でも、わからない',            response: 'わからない、というのが答えになることもあります。' }
+  ];
+
+  function shouldShow() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return true;
+      var saved = parseInt(raw, 10);
+      if (isNaN(saved)) return true;
+      var elapsedDays = (Date.now() - saved) / (1000 * 60 * 60 * 24);
+      return elapsedDays >= CACHE_DAYS;
+    } catch (e) { return true; }
+  }
+
+  function markShown() {
+    try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+  }
+
+  var overlay  = document.getElementById('hyoujou-overlay');
+  var optsEl   = document.getElementById('hyoujou-options');
+  var qArea    = document.getElementById('hyoujou-question-area');
+  var rArea    = document.getElementById('hyoujou-response-area');
+  var respEl   = document.getElementById('hyoujou-response');
+  var enterBtn = document.getElementById('hyoujou-enter');
+  var closeBtn = document.getElementById('hyoujou-close');
+
+  pairs.forEach(function(p, i) {
+    var btn = document.createElement('button');
+    btn.className = 'hyoujou-option';
+    btn.textContent = p.option;
+    btn.addEventListener('click', function() { showResponse(i); });
+    optsEl.appendChild(btn);
+  });
+
+  function showResponse(i) {
+    qArea.style.display = 'none';
+    rArea.style.display = 'block';
+    respEl.textContent = pairs[i].response;
+    setTimeout(function() {
+      respEl.classList.add('is-visible');
+      enterBtn.classList.add('is-visible');
+    }, 100);
+  }
+
+  function close() {
+    markShown();
+    overlay.classList.add('is-fading');
+    overlay.classList.remove('is-visible');
+    setTimeout(function() {
+      overlay.style.display = 'none';
+      document.body.classList.remove('hyoujou-lock');
+    }, 800);
+  }
+
+  enterBtn.addEventListener('click', close);
+  closeBtn.addEventListener('click', close);
+
+  if (shouldShow()) {
+    document.body.classList.add('hyoujou-lock');
+    overlay.style.display = 'flex';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() { overlay.classList.add('is-visible'); });
+    });
+  }
 })();
 </script>
 
